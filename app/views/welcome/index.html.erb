@@ -1,0 +1,17 @@
+<h1> Welcome to the Bentley Park Tennis Courts </h1>
+<p>See a list of our events below </p>
+
+<%= month_calendar events: @meetings do |date, meetings| %>
+  <%= date %>
+
+  <% meetings.each do |meeting| %>
+    <div>
+      <%= meeting.name %>
+      <%= meeting.start_time %>
+      <%= meeting.end_time %>
+    </div>
+  <% end %>
+<% end %>
+
+
+<p><%= link_to "Add An Event", meetings_new_path %></p>
