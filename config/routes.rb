@@ -5,7 +5,10 @@ Rails.application.routes.draw do
 
   get 'welcome/about' 
   get 'meetings/new'
-  post 'meeting/new'
+  post 'meetings/new'
+
+  get 'meetings/index'
+  post 'meetings/index'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

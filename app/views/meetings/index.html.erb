@@ -2,6 +2,7 @@
 
 <h1>Listing Meetings</h1>
 
+<%= current_user.username %>
 <table>
   <thead>
     <tr>
@@ -15,6 +16,7 @@
 
   <tbody>
     <% @meetings.each do |meeting| %>
+     <% if meeting.username == current_user.username %>
       <tr>
         <td><%= meeting.name %></td>
         <td><%= meeting.start_time %></td>
@@ -24,6 +26,7 @@
         <td><%= link_to 'Edit', edit_meeting_path(meeting) %></td>
         <td><%= link_to 'Destroy', meeting, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
+     <% end %>
     <% end %>
   </tbody>
 </table>
