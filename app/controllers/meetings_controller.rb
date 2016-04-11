@@ -45,9 +45,20 @@ class MeetingsController < ApplicationController
   # PATCH/PUT /meetings/1.json
   def update
     respond_to do |format|
+
       if @meeting.update(meeting_params)
+        # sets the time of the reservation based on the selection of practice or game
+
+        if meeting_params["block"] == "Practice"
+          @meeting.end_time = @meeting.start_time + 2.hours
+        else
+          @meeting.end_time = @meeting.start_time + 4.hours
+        end  
+          
+        @meeting.save
         format.html { redirect_to @meeting, notice: 'Meeting was successfully updated.' }
         format.json { render :show, status: :ok, location: @meeting }
+        
       else
         format.html { render :edit }
         format.json { render json: @meeting.errors, status: :unprocessable_entity }

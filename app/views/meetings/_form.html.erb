@@ -19,10 +19,13 @@
     <%= f.label :start_time %><br>
     <%= f.datetime_select :start_time %>
   </div>
+
   <div class="field">
-    <%= f.label :end_time %><br>
-    <%= f.datetime_select :end_time %>
+   <p> Is this a practice or game: <%= select_tag :block, options_for_select([ "Practice", "Game" ]), :prompt => "Please select" %></p>
   </div>
+
+
+
   <div class="field">
     <%= f.label :username %><br>
     <%= f.text_field :username %>

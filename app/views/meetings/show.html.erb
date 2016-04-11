@@ -1,24 +1,45 @@
+<div class="row">
+<div class="col-lg-8">
+    <div class="well">
+
+      
+
 <p id="notice"><%= notice %></p>
 
+
+<h2> Your reservation is set!  Please make a note on your calendar. </h2>
 <p>
   <strong>Name:</strong>
   <%= @meeting.name %>
 </p>
 
-<p>
-  <strong>Start time:</strong>
-  <%= @meeting.start_time %>
-</p>
 
-<p>
-  <strong>End time:</strong>
-  <%= @meeting.end_time %>
-</p>
+<!-- puts the date in Day, Month date, year format -->
+		<p>
+		<strong>Date: </strong>
+		<%= @meeting.start_time.strftime("%A, %B %d, %Y") %>
+		</p>
 
-<p>
-  <strong>Username:</strong>
-  <%= @meeting.username %>
-</p>
+		<p>
+		  <strong>Start time:</strong>
+		  <%= @meeting.start_time.strftime("%I:%M%p") %> 
+		     
+		</p>
 
-<%= link_to 'Edit', edit_meeting_path(@meeting) %> |
-<%= link_to 'Back', meetings_path %>
+		<p>
+		  <strong>End time:</strong>
+		  <%= @meeting.end_time.strftime("%I:%M%p") %>
+		</p>
+
+		<p>
+		  <strong>Username:</strong>
+		  <%= @meeting.username %>
+		</p>
+
+
+<%= link_to 'Edit', edit_meeting_path(@meeting), class: 'btn btn-warning' %> |
+<%= link_to 'Back', meetings_path, class: 'btn btn-success' %>
+
+</div>
+</div>
+</div>
