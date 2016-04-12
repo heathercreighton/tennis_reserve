@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   get 'welcome/about' 
   get 'meetings/new'
   post 'meetings/new'
+  get 'meetings/create'
+  post 'meetings/create'
 
   get 'meetings/index'
   post 'meetings/index'

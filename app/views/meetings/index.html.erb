@@ -1,18 +1,15 @@
-<p id="notice"><%= notice %></p>
 
+<div class="well" style="background: rgba(255, 255, 255, 0.5);">
+  <p id="notice"><%= notice %></p>
 
-
-  <div class="well" style="background: rgba(255, 255, 255, 0.5);">
-
-
-    <h2>Reservation created by <%= current_user.username %></h2>
+    <h2>Reservations created by <%= current_user.username %></h2>
 
     
 
       
         <% @meetings.each do |meeting| %>
          <% if meeting.username == current_user.username %>
-
+              <%if meeting.start_time != nil %>
         
           <div class="row">
               <div class="col-md-5">
@@ -31,6 +28,7 @@
               </div>
             </div>
           </div>
+          <% end %>
          <% end %>
         <% end %>
       

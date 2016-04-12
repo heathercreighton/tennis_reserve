@@ -19,6 +19,9 @@ class MeetingsController < ApplicationController
     @meeting = Meeting.new
     @meeting.username = current_user.username
     @meeting.save
+
+
+     
   end
 
   # GET /meetings/1/edit
@@ -29,7 +32,7 @@ class MeetingsController < ApplicationController
   # POST /meetings.json
   def create
     @meeting = Meeting.new(meeting_params)
-
+    @meeting.username = current_user.username
     respond_to do |format|
       if @meeting.save
         format.html { redirect_to @meeting, notice: 'Meeting was successfully created.' }
@@ -39,32 +42,43 @@ class MeetingsController < ApplicationController
         format.json { render json: @meeting.errors, status: :unprocessable_entity }
       end
     end
+
+    
   end
 
   # PATCH/PUT /meetings/1
   # PATCH/PUT /meetings/1.json
   def update
+    
     respond_to do |format|
 
+    
       if @meeting.update(meeting_params)
+       
+      
+
         # sets the time of the reservation based on the selection of practice or game
 
-        if meeting_params["block"] == "Practice"
-          @meeting.end_time = @meeting.start_time + 2.hours
-        else
-          @meeting.end_time = @meeting.start_time + 4.hours
-        end  
+          if meeting_params["block"] == "Practice"
+            @meeting.end_time = @meeting.start_time + 2.hours
+          else
+            @meeting.end_time = @meeting.start_time + 3.hours
+          end  
           
-        @meeting.save
-        format.html { redirect_to @meeting, notice: 'Meeting was successfully updated.' }
-        format.json { render :show, status: :ok, location: @meeting }
+          @meeting.save
+          
+
+          format.html { redirect_to @meeting, notice: 'Meeting was successfully updated.' }
+          format.json { render :show, status: :ok, location: @meeting }
         
       else
         format.html { render :edit }
         format.json { render json: @meeting.errors, status: :unprocessable_entity }
       end
+      
+     end
+
     end
-  end
 
   # DELETE /meetings/1
   # DELETE /meetings/1.json

@@ -13,13 +13,21 @@
 </div>
 </div>
 
+<!-- remove nil entries -->
+
+<% @meetings.each do |m| %>
+    <% if m.start_time == nil %>
+      <%  m.delete  %>
+    <% end %>
+<% end %>
+<!-- end of removal -->
 
 <%= month_calendar events: @meetings do |date, meetings| %>
   <%= date.strftime("%d") %>
 
   <% meetings.each do |meeting| %>
     <div>
-      <%= meeting.name %><br/>
+      <strong><%= meeting.name %></strong><br/>
       <%= meeting.start_time.strftime("%I:%M%p") %> - <br/>
       <%= meeting.end_time.strftime("%I:%M%p") %><br/>
       Created by: <%= meeting.username %>

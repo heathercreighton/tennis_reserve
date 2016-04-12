@@ -1,7 +1,8 @@
 class WelcomeController < ApplicationController
   def index
-  @meetings = Meeting.all
-end
+  	@meetings = Meeting.all
+		
+	end		
 
   def about
   end
